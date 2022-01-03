@@ -1357,6 +1357,7 @@ dependencies = [
  "swash",
  "tokio",
  "tokio-util",
+ "toml",
  "unicode-segmentation",
  "which",
  "winapi",

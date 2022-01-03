@@ -2,6 +2,8 @@ use std::any::{Any, TypeId};
 use std::collections::HashMap;
 use std::convert::TryInto;
 
+mod config;
+pub use config::{load_config, ConfigSettings};
 mod from_value;
 mod window_geometry;
 pub use from_value::FromValue;

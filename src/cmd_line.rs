@@ -160,6 +160,7 @@ pub fn handle_command_line_arguments(args: Vec<String>) -> Result<(), String> {
      *
      * If the command-line argument is not set, the environment variable is used.
      */
+    let config = load_config();
     SETTINGS.set::<CmdLineSettings>(&CmdLineSettings {
         // Pass through arguments
         neovim_args,
@@ -171,8 +172,12 @@ pub fn handle_command_line_arguments(args: Vec<String>) -> Result<(), String> {
         wsl: matches.is_present("wsl"),
         // Command-line flags with environment variable fallback
         frameless: matches.is_present("frameless") || std::env::var("NEOVIDE_FRAMELESS").is_ok(),
-        maximized: matches.is_present("maximized") || std::env::var("NEOVIDE_MAXIMIZED").is_ok(),
-        multi_grid: matches.is_present("multi_grid") || std::env::var("NEOVIDE_MULTIGRID").is_ok(),
+        maximized: matches.is_present("maximized")
+            || std::env::var("NEOVIDE_MAXIMIZED").is_ok()
+            || config.maximized,
+        multi_grid: matches.is_present("multi_grid")
+            || std::env::var("NEOVIDE_MULTIGRID").is_ok()
+            || config.multigrid,
         no_idle: matches.is_present("noidle") || std::env::var("NEOVIDE_NO_IDLE").is_ok(),
         // Srgb is enabled by default, so set it to false if nosrgb or NOEVIDE_NO_SRGB is set
         srgb: !(matches.is_present("nosrgb") || std::env::var("NEOVIDE_NO_SRGB").is_ok()),
