@@ -1,22 +1,24 @@
-use std::any::{Any, TypeId};
-use std::collections::HashMap;
-use std::convert::TryInto;
-
 mod config;
-pub use config::{load_config, ConfigSettings};
 mod from_value;
 mod window_geometry;
-pub use from_value::FromValue;
+
 use log::trace;
 use nvim_rs::Neovim;
 use parking_lot::RwLock;
-pub use rmpv::Value;
-pub use window_geometry::{
-    load_last_window_position, parse_window_geometry, save_window_geometry, DEFAULT_WINDOW_GEOMETRY,
+use rmpv::Value;
+use std::{
+    any::{Any, TypeId},
+    collections::HashMap,
+    convert::TryInto,
 };
 
-use crate::bridge::TxWrapper;
-use crate::error_handling::ResultPanicExplanation;
+use crate::{bridge::TxWrapper, error_handling::ResultPanicExplanation};
+pub use config::{load_config, ConfigSettings};
+pub use from_value::FromValue;
+pub use window_geometry::{
+    load_last_window_settings, parse_window_geometry, save_window_geometry,
+    PersistentWindowSettings, DEFAULT_WINDOW_GEOMETRY,
+};
 
 lazy_static! {
     pub static ref SETTINGS: Settings = Settings::new();

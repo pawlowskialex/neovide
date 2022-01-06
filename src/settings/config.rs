@@ -3,12 +3,12 @@
 use serde::{Deserialize, Serialize};
 use skia_safe::font::Edging;
 
-use glutin::dpi::PhysicalPosition;
+//use glutin::dpi::PhysicalPosition;
 
 use crate::settings::SETTINGS;
-use crate::utils::Dimensions;
+//use crate::utils::Dimensions;
 
-use super::DEFAULT_WINDOW_GEOMETRY;
+//use super::DEFAULT_WINDOW_GEOMETRY;
 
 use std::path::PathBuf;
 
@@ -25,20 +25,20 @@ pub struct ConfigSettings {
     pub font_antialias: FontAntialias,
 }
 
-#[derive(Debug, Deserialize, Serialize, Clone, Copy)]
-pub struct ConfigWindowSettings {
-    pub position: PhysicalPosition<i32>,
-    pub geometry: Dimensions,
-}
+//#[derive(Debug, Deserialize, Serialize, Clone, Copy)]
+//pub struct ConfigWindowSettings {
+//    pub position: PhysicalPosition<i32>,
+//    pub geometry: Dimensions,
+//}
 
-impl Default for ConfigWindowSettings {
-    fn default() -> Self {
-        Self {
-            position: PhysicalPosition::default(),
-            geometry: DEFAULT_WINDOW_GEOMETRY,
-        }
-    }
-}
+//impl Default for ConfigWindowSettings {
+//    fn default() -> Self {
+//        Self {
+//            position: PhysicalPosition::default(),
+//            geometry: DEFAULT_WINDOW_GEOMETRY,
+//        }
+//    }
+//}
 
 #[derive(Debug, Deserialize, Serialize, Clone, Copy, PartialEq, Eq)]
 pub enum FontAntialias {
